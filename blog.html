@@ -1,20 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-        <!-- added daisy ui and tailwind css -->
-        <link
-        href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css"
-        rel="stylesheet"
-        type="text/css"
-      />
-      <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Include Tailwind CSS here -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="bg-sky-300 p-4">
+      <div class="text-center text-4xl font-extrabold">Welcome To My Blog</div>
+    </div>
 
-    <h1 class="text-center text-5xl font-extrabold text-cyan-500">this my blog site</h1>
+    <!-- <h2 class="text-2xl font-bold text-center bg-amber-200 my-5"> Discuss the scope of var, let, and const</h2> -->
+
+    <div class="flex flex-wrap">
+      <div class="w-3/4 p-4">
+        <div class="bg-white p-4 m-4">
+          <h2 class="text-2xl font-bold">The scope of var, let, and const</h2>
+          <h5 class="text-sm">var, let, and const, sep 1, 2023</h5>
+<div>
+    <div class="py-8">
+        <p class="text-xl font-bold">Scope</p>
+        <p>
+          Scope essentially means where these variables are available for
+          use. Scope determines the accessibility (visibility) of these
+          variables.
+        </p>
+
+        <p class="text-xl font-bold">var</p>
+        <p>
+          All the variables which are declared using var are globally scoped
+          or function/locally scoped. The scope is global when a var
+          variable is declared outside a function. wait what does it mean.
+          let’s see one example.
+
+          <br />
+          <br />
+          var globalVar = "hey";<br />
+          function var() {<br />
+          var innerVariable = "hello";<br />
+          } <br />
+          Here, globalVar is globally scoped because it exists outside a
+          function while innerVariable is function scoped. So we can access
+          globalVar inside function as well as outside of a function but we
+          cannot access the variable innerVariable outside of a function.
+        </p>
+      </div><br>
+      
+      So if we do this: <br>
+
+      var globalVar = "hey hi"; <br>
+      function newFunction() { <br>
+          var innerVariable = "hello"; <br>
+      } <br>
+      console.log(innerVariable); // error: innerVariable is not defined <br>
+<br>
+      <p class="text-xl font-bold">var can be re-declared and updated.</p>
+
+      What it means is you can re-initialize the variable using the same name with <br> var and also you can update its value.
+       
+<br>
+<br>
+
+      var globalVar = "hey"; <br>
+      var globalVar = "Hello"; <br>
+      var innerVariable = "hey"; <br>
+      innerVariable = "Hello"; <br>
+      </p>
+      <br>
+<p class="text-xl font-bold">What’s the problem with var</p>
+<br>
+<p>
+var globalVar = "hey"; <br>
+var flag = true; <br>
+if (flag) { <br>
+var globalVar = "Hello"; <br>
+} <br>
+console.log(globalVar) // "Hello" <br>
+
+
+<br>
+<br>
+So, since the flag returns true, globalVar is redefined to “Hello”. It becomes a problem when you want to update the variable’s value for that particular block. Here, globalVar will print “Hello” whenever you try to access it anywhere.
+</p> 
+<p class="text-xl font-bold"> let</p>
+
+
+<p>let solves the problem with var that we just covered. Let’s consider why this is so. let is block scoped. a variable declared in a block with let is only available for use within that block. <br>
+
+if (flag) { <br>
+    var globalVar = "Hello"; <br>
+    console.log(globalVar) <br>
+} <br>
+console.log(globalVar); // error: globalVar is not defined <br>
+
+
+</p>
+<br>
+<p>
+
+    We see that using globalVar outside its block returns an error. This is because let variables are block scoped.
+    <br>
+    <span class="text-red-600">let can be updated but not re-declared.</span> <br> <br>
+    What it means is you can not re-initialize the variable using the same name with let and you can update its value.
+    <br> <br>
+    If you try following then it will work for let. <br>
+
+    <br>
+    <br>
+    let globalVar = "Hi"; <br>
+globalVar = "Hello"; <br> <br>
+But if you try following then it will throw an error. <br> <br>
+
+let globalVar = "Hi"; <br>
+let globalVar = "Hello"; // Identifier 'globalVar' has already been declared <br> <br>
+However, if you’ve defined the same variable is defined in different scopes then it will run perfectly without any error: <br>
+<br>
+let globalVar = "hey";<br>
+let flag = true; <br>
+if (flag) { <br>
+    let globalVar = "Hello"; <br>
+    console.log(globalVar); // "Hello" <br>
+} <br>
+console.log(globalVar) // "hey" <br>
+</p>
+<br>
+<br>
+<p class="text-xl font-bold">const</p>
+<p>
+
+    Like let, const declarations also can only be accessed within the block they were declared. let’s see what’s the difference between let and const. <br><br>
+
+
+    <p class="text-red-600">const cannot be updated or re-declared</p> <br> 
+
+
+    What it means is you can not re-initialize the variable using the same name with const and also you can update its value. <br><br>
+    If you try both of the following then both will throw an error for const. <br>
+
+
+    const globalVar = "Hi";<br>
+globalVar = "Hello"; // error: Assignment to constant variable. <br>
+const globalVar = "Hi"; <br>
+const globalVar = "Hello"; // Identifier 'globalVar' has already been declared <br> <br>
+But you can mutate an object declared with const like below. <br>
+
+person.gender = "male";<br>
+<br>
+This will add gender property in the person object with value male without returning errors. <br>
+
+
+
+
+
+</p>
+<p class="text-xl font-bold">Conclusion</p>
+<p>It’s generally advisable and also good practice to avoid using var because of its function-scope. It absolutely appears to be that the aim of ES6 is to replace var with let/const since they will result in better coding practices.</p>
+    </div>
     
-</body>
+  </div>
+</div>
+    
+    </div>
+
+
+
+    <div class="container mx-auto">
+        <h2 class="text-2xl font-semibold mb-4">Comparison Between Undefined and Null</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full border border-gray-200">
+                <thead>
+                    <tr>
+                        <th class="border border-gray-200 bg-gray-100 px-4 py-2">Property</th>
+                        <th class="border border-gray-200 bg-gray-100 px-4 py-2">Undefined</th>
+                        <th class="border border-gray-200 bg-gray-100 px-4 py-2">Null</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-2">1. Meaning</td>
+                        <td class="border border-gray-200 px-4 py-2">Undefined means a variable has been declared but has yet not been assigned a value.</td>
+                        <td class="border border-gray-200 px-4 py-2">Null is an assignment value. It can be assigned to a variable as a representation of no value.</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-2">2. ECMAScript Version</td>
+                        <td class="border border-gray-200 px-4 py-2">ES1 (ECMAScript 1)</td>
+                        <td class="border border-gray-200 px-4 py-2">Primitive value in JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-2">3. Supported Browsers</td>
+                        <td class="border border-gray-200 px-4 py-2">Chrome, Microsoft Edge, Internet Explorer, Firefox, Safari, Opera Mini</td>
+                        <td class="border border-gray-200 px-4 py-2">Chrome, Microsoft Edge, Internet Explorer, Firefox, Safari, Opera Mini</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-2">4. Syntax</td>
+                        <td class="border border-gray-200 px-4 py-2">N/A</td>
+                        <td class="border border-gray-200 px-4 py-2">null</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-2">5. Global Property</td>
+                        <td class="border border-gray-200 px-4 py-2">Undefined is not a global property.</td>
+                        <td class="border border-gray-200 px-4 py-2">Null is not a global property.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+<br>
+<br>
+<h2 class="text-2xl font-semibold mb-4">REST API Principles</h2>
+<p>An API, or application programming interface, is a set of rules that define how applications or devices can connect to and communicate with each other. A REST API is an API that conforms to the design principles of the REST, or representational state transfer architectural style. For this reason, REST APIs are sometimes referred to RESTful APIs.</p>
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg">
+            <thead>
+                <tr>
+                    <th class="border-b-2 p-2">Principle</th>
+                    <th class="border-b-2 p-2">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b p-2">Statelessness</td>
+                    <td class="border-b p-2">Each request contains all necessary information; no client state is stored on the server.</td>
+                </tr>
+                <tr>
+                    <td class="border-b p-2">Resources</td>
+                    <td class="border-b p-2">Resources are identified by unique URLs and represent objects, data, or services.</td>
+                </tr>
+                <tr>
+                    <td class="border-b p-2">HTTP Methods</td>
+                    <td class="border-b p-2">Standard HTTP methods (GET, POST, PUT, DELETE) are used to perform actions on resources.</td>
+                </tr>
+                <tr>
+                    <td class="border-b p-2">Representation</td>
+                    <td class="border-b p-2">Resources can have multiple representations (e.g., JSON, XML) for client preference.</td>
+                </tr>
+                <tr>
+                    <td class="border-b p-2">Uniform Interface</td>
+                    <td class="border-b p-2">REST APIs follow a uniform and consistent interface, including HTTP methods and status codes.</td>
+                </tr>
+                <tr>
+                    <td class="border-b p-2">Stateless Communication</td>
+                    <td class="border-b p-2">Each request is self-contained, and server does not store client state between requests.</td>
+                </tr>
+                <tr>
+                    <td class="border-b p-2">Layered System</td>
+                    <td class="border-b p-2">REST allows for a layered architecture with intermediaries like proxies and load balancers.</td>
+                </tr>
+                <tr>
+                    <td class="border-b p-2">Client-Server</td>
+                    <td class="border-b p-2">Clear separation of concerns between clients (UI) and servers (data processing).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        </div>
+    </div>
+
+
+
+
+
+    
+
+    <div class="bg-sky-400 p-4 mt-4 text-center">
+      <h2 class="text-center text-white text-4xl font-extrabold">Thank you for visit my blog</h2>
+    </div>
+  </body>
 </html>
