@@ -14,44 +14,55 @@
   </head>
   <body>
     <header>
-    
-        <section class="container mx-auto my-5">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-               <a href="index.html"> <img src="images/Logo.png" alt="" class="mb-2 md:mb-0"></a>
-        
-                <div class="mb-2 md:mb-0">
-                    <button class="btn bg-gray-200">Sort by view</button>
-                </div>
-        
-                <div>
-                    <button class="btn bg-[#FF1F3D] text-white"><a href="blog.html">My Blogs</a></button>
-                </div>
-            </div>
-            <br>
-         <hr>
-        </section>
-        
+      <section class="container mx-auto my-5">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0"
+        >
+          <a href="index.html">
+            <img src="images/Logo.png" alt="" class="mb-2 md:mb-0"
+          /></a>
 
-        <div class="tab-container w-full">
+          <div class="mb-2 md:mb-0">
+            <button
+              id="sort-button"
+              onclick="sortDataByViews()"
+              class="btn bg-gray-200"
+            >
+              Sort by view
+            </button>
+          </div>
 
-          <div class="tabs tabs p-5  m-auto text-center flex justify-center" id="tab-container">
-              <!-- <a class="tab">Tab 1</a> 
+          <div>
+            <button class="btn bg-[#FF1F3D] text-white">
+              <a href="blog.html">My Blogs</a>
+            </button>
+          </div>
+        </div>
+        <br />
+        <hr />
+      </section>
+
+      <div class="tab-container w-full">
+        <div
+          class="tabs tabs p-5 m-auto text-center flex justify-center"
+          id="tab-container"
+        >
+          <!-- <a class="tab">Tab 1</a> 
               <a class="tab tab-active">Tab 2</a> 
               <a class="tab">Tab 3</a> -->
-            </div>
+        </div>
       </div>
-
-
     </header>
 
     <main>
+      <!-- card section -->
 
-        <!-- card section -->
-
-
-        <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          <!-- News cards will be added here -->
-          <!-- <div class="card  bg-base-100 shadow-xl">
+      <div
+        id="card-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"
+      >
+        <!-- News cards will be added here -->
+        <!-- <div class="card  bg-base-100 shadow-xl">
             <figure><img class="w-f" src="images/Rectangle 1.png" alt="Shoes" /></figure>
             <div class="card-body">
             <div class="flex items-center">
@@ -76,23 +87,9 @@
               </div>
             </div>
           </div>  -->
-          
-          
-
-
-
-
-          
-
       </div>
 
-      
-  <div id="card-container2">
-
-
-  </div>
-      
-
+      <div id="card-container2"></div>
     </main>
 
     <footer></footer>
